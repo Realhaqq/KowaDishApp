@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "236399273017",
+    "firebase_url": "https://namu-52d2e.firebaseio.com",
+    "project_id": "namu-52d2e",
+    "storage_bucket": "namu-52d2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236399273017:android:32fcef1e4ab88de69bd9e8",
+        "android_client_info": {
+          "package_name": "com.haqq.namu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236399273017-1mbspoili21bmiolb1t411l50dkmu2hn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.haqq.namu",
+            "certificate_hash": "c50d77589e5e6e1f96dce3f9de298aafec7f12bf"
+          }
+        },
+        {
+          "client_id": "236399273017-8a7cspc5a0kb1nc0pc4gfaqc8fb8m81k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJft49t0lTIdmVxgF_arFXWrR5OfUWJmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236399273017-8a7cspc5a0kb1nc0pc4gfaqc8fb8m81k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

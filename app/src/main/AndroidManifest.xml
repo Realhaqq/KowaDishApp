@@ -1,0 +1,70 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.haqq.namu">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+<!--    <uses-sdk android:targetSdkVersion="28" android:minSdkVersion="14"-->
+<!--        tools:overrideLibrar="com.haqq.namu"/>-->
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/namu"
+        android:roundIcon="@drawable/namu"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true">
+
+
+
+        <activity android:name="com.haqq.namu.Activities.SplashActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+
+
+        </activity>
+
+        <activity android:name="com.haqq.namu.Activities.FoodActivity" />
+        <activity
+            android:name="com.haqq.namu.Activities.FoodDetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name="com.haqq.namu.Activities.CartActivity" />
+        <activity android:name="com.haqq.namu.Activities.ConfirmActivity" />
+        <activity android:name="com.haqq.namu.Activities.PaymentActivity" />
+        <activity android:name="com.haqq.namu.Activities.RefineActivity" />
+        <activity
+            android:name="com.haqq.namu.Activities.SignInActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name="com.haqq.namu.Activities.MainActivity" />
+        <activity android:name="com.haqq.namu.Activities.AddAddressActivity" />
+        <activity android:name="com.haqq.namu.Activities.EditActivity" />
+        <activity android:name=".Activities.SignUpActivity"></activity>
+        <activity android:name=".Activities.FoodListActivity"></activity>
+
+        <activity android:name=".Activities.PaymentCard"></activity>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD4wgpSFsyKJ7vOS0iAJjLjwGOhe62rTI0" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data android:name="co.paystack.android.PublicKey"
+            android:value="pk_live_28488d18b24729956940044bd50ddd9f759954ec"/>
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+    </application>
+
+</manifest>

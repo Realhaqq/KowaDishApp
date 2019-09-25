@@ -1,0 +1,145 @@
+<resources>
+    <string name="app_name">Namu</string>
+
+    <string name="sign_in">SIGN IN</string>
+    <string name="email">EMAIL ADDRESS</string>
+    <string name="password">PASSWORD</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="new_user">New user?</string>
+    <string name="sign_in_with">Or Signin with</string>
+    <string name="full_name">FULL NAME</string>
+    <string name="already_reg">Already registered?</string>
+    <string name="Forgot">FORGOT?</string>
+
+    <string name="emaill">Email</string>
+    <string name="phone">Phone</string>
+    <string name="Name">Name</string>
+    <string name="your_message">Your message</string>
+    <string name="send">Send us</string>
+
+    <string name="offers">OFFERS</string>
+    <string name="Addnote">Add a note (Extra source, no olive oil, etc.)</string>
+    <string name="items">Items in cart</string>
+    <string name="total">Total</string>
+
+    <string name="sub_total">Sub Total</string>
+    <string name="service_free">Service fee(4%)</string>
+    <string name="delivery_charge">Delivery Charge</string>
+    <string name="promocode">Have promocode?</string>
+    <string name="proceed">Proceed to Checkout</string>
+    <string name="Pay">Pay</string>
+
+    <string name="Amount_Payable">Amount Payable</string>
+    <string name="payment_mode">Select Payment Mode</string>
+    <string name="Cash_d">Cash on Delivery</string>
+    <string name="Cash">Cash</string>
+    <string name="Wallet">Wallets</string>
+    <string name="Cards">Cards</string>
+    <string name="Debit">Debit Card &amp; Credit Card</string>
+    <string name="net_bank">Net Banking</string>
+    <string name="pay_d">Pay directly from your bank</string>
+    <string name="confirm">Confirm Order</string>
+
+    <string name="saved">Your Saved Addresses</string>
+    <string name="add_new">Add new</string>
+    <string name="f_name">Full Name</string>
+    <string name="email_add">Email Address</string>
+
+    <string name="pay_amount">Pay Amount</string>
+    <string name="delivery">Delivery address</string>
+
+    <string name="proceed_payment">Proceed to payment</string>
+
+    <string name="food_type">Type of food</string>
+    <string name="price_sort">Price sort by</string>
+    <string name="price_range">Price range</string>
+    <string name="both">Both</string>
+    <string name="veg">Veg</string>
+    <string name="non_veg">Non-veg</string>
+    <string name="hightolow">High to Low</string>
+    <string name="lowtohigh">Low to high</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="apply_f">Apply Filters</string>
+
+    <string name="order_placed">Order placed</string>
+    <string name="prepare">Preparing</string>
+    <string name="dispatched">Dispatched</string>
+    <string name="deliver">Delivered</string>
+    <string name="cash_delivery">Cash on Delivery</string>
+
+    <string name="add">Add</string>
+
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_home">Home</string>
+    <string name="nav_orders">Orders</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_rate">Rate us</string>
+    <string name="nav_support">Support</string>
+    <string name="nav_share">Share</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Orders</item>
+        <item>Profile</item>
+        <item>Rate us</item>
+        <item>Support</item>
+        <item>share</item>
+    </string-array>
+
+    <string name="phone_num_10">10 Digit Phone Number</string>
+    <string name="flat">Flat/House Number/Floor/Building</string>
+    <string name="locality">Locality/Street/Society</string>
+    <string name="landmark">Landmark</string>
+    <string name="pin">6 Digit Pincode</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="Add_add">Add Address</string>
+    <string name="update_add">Update Address</string>
+    <string name="add_new_add">Add new Address</string>
+
+    <string-array name="state_array">
+        <item>Andaman and Nicobar Islands</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra and Nagar Haveli</item>
+        <item>Daman and Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Pondicherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttaranchal</item>
+        <item>Uttar Pradesh</item>
+        <item>West Bengal</item>
+    </string-array>
+
+
+</resources>

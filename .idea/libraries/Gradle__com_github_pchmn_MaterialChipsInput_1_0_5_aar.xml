@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.pchmn:MaterialChipsInput:1.0.5@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/cc529069a7b296793674117b094333f7/MaterialChipsInput-1.0.5/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/cc529069a7b296793674117b094333f7/MaterialChipsInput-1.0.5/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.github.pchmn/MaterialChipsInput/1.0.5/519597e2661c4b5fc5dbd59fd417cbede4a75543/MaterialChipsInput-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:theme="@style/backArrowTheme">
+
+        <ImageView
+            android:id="@+id/toolbar_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/namuleft" />
+
+
+        <RelativeLayout
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginLeft="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/cart_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cart_icon"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:id="@+id/count_item_in_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/cart_icon"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:layout_marginTop="-10dp"
+                android:layout_alignRight="@+id/cart_icon"
+                android:layout_marginRight="-10dp"
+                android:text="0"
+                android:textColor="@color/colorAccent"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+</android.support.design.widget.CoordinatorLayout>

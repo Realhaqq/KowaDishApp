@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:title="Credit Card Payment"
+        app:contentInsetStartWithNavigation="0dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card1"
+        android:layout_below="@+id/toolbar"
+        app:contentPaddingTop="10dp"
+        app:contentPaddingBottom="10dp"
+        app:contentPaddingLeft="20dp"
+        app:contentPaddingRight="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Amount_Payable"/>
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="29.57 $"
+            android:layout_gravity="right"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"/>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_mode"
+        android:layout_below="@+id/card1"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/payment_mode_text"/>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card2"
+        android:layout_below="@id/payment_mode_text"
+        style="@style/CardViewStyle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Cash"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/cash_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Cash_d"
+                android:layout_below="@+id/cash_text"
+                android:layout_marginTop="8dp"
+                android:id="@+id/cash_d_text"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_keyboard_arrow_down_grey_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/cash_d_text"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card3"
+        android:layout_below="@id/card2"
+        style="@style/CardViewStyle"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Wallet"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/wallet_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PayTM, Freecharge, mobiWik, OLA money etc."
+                android:layout_below="@+id/wallet_text"
+                android:layout_marginTop="8dp"
+                android:id="@+id/paytm_text"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_keyboard_arrow_down_grey_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/paytm_text"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card4"
+        android:layout_below="@id/card3"
+        style="@style/CardViewStyle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Cards"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/card_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Debit"
+                android:layout_below="@+id/card_text"
+                android:layout_marginTop="8dp"
+                android:id="@+id/debit_text"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_keyboard_arrow_down_grey_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/debit_text"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card4"
+        style="@style/CardViewStyle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/net_bank"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/net_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pay_d"
+                android:layout_below="@+id/net_text"
+                android:layout_marginTop="8dp"
+                android:id="@+id/pay_text"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_keyboard_arrow_down_grey_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/pay_text"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="@color/colorPrimary"
+        android:id="@+id/button_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:textColor="@color/colorAccent"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

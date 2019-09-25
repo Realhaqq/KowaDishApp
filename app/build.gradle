@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 28
+//    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.haqq.namu"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 2
+        versionName "1.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    androidTestImlementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
+//    compile 'com.android.support:design:25.3.1'
+//    compile 'com.android.support:cardview-v7:25.3.1'
+    implementation 'com.google.android.gms:play-services-places:10.2.4'
+    implementation 'com.crystal:crystalrangeseekbar:1.1.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    testImplementation 'junit:junit:4.12'
+
+
+//    compile 'co.paystack.android:paystack:3.0.10'
+//    compile 'com.mikhaellopez:circularimageview:3.2.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+//    compile 'com.android.support:recyclerview-v7:25.1.0'
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v13:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+
+    // third party dependencies -------------------------------------------------------------------
+    implementation 'com.balysv:material-ripple:1.0.2'                  // ripple effect
+    implementation 'com.wdullaer:materialdatetimepicker:3.2.0'         // date & time picker
+    implementation 'com.mikhaellopez:circularimageview:3.2.0'          // circle image view
+    implementation 'com.github.pchmn:MaterialChipsInput:1.0.5'         // material chip
+    implementation 'com.hootsuite.android:nachos:1.1.1'                // material chips
+    implementation 'com.google.android:flexbox:0.3.2'                  // google flexible box
+    implementation 'com.crystal:crystalrangeseekbar:1.1.3'
+    implementation 'co.paystack.android:paystack:3.0.10'
+    implementation 'pub.devrel:easypermissions:0.2.0'
+//    implementation 'net.gotev:uploadservice:2.1'
+//    implementation 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
+    implementation 'com.github.smrtyvz:ArchedImageProgressBar:2.01'
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
+//    implementation 'com.github.Ikhiloya:NigeriaStatesAndLGAs:0.1.1'
+//    implementation 'com.fenchtose.nocropper:nocropper:0.3.0'
+//    implementation 'com.jakewharton:butterknife:7.0.1'
+//    implementation 'dev.dworks.libs:volleyplus:+'
+//    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+//    implementation 'com.android.support:design:28.0.0'
+//    implementation 'com.android.support:recyclerview-v7:28.0.0'
+//    implementation 'com.android.support:cardview-v7:28.0.0'
+    //glide
+//    implementation 'com.github.bumptech.glide:glide:4.9.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.github.scottyab:showhidepasswordedittext:0.8'
+
+//    implementation 'com.github.bumptech.glide:glide:3.7.0'             // image loader
+
+//    implementation 'com.github.chinalwb:are:0.1.7'
+
+
+//    implementation "com.squareup.retrofit2:converter-gson:2.zx3.0"
+//    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+//    implementation 'com.google.android.exoplayer:exoplayer:r2.5.4'
+//    implementation "com.google.android.exoplayer:extension-rtmp:r2.5.4"
+    implementation 'com.balysv:material-ripple:1.0.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-places:15.0.1'
+
+    // google gson --------------------------------------------------------------------------------
+    implementation 'com.google.code.gson:gson:2.8.4'
+
+
+}

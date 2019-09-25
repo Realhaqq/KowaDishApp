@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="100"
+    android:layout_marginBottom="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Crispy Chicken garlic periperi pizza(x1)"
+        android:layout_weight="70"
+        android:textColor="@color/black"
+        android:id="@+id/item_name"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="14.99 $"
+        android:layout_weight="30"
+        android:gravity="right"
+        android:id="@+id/price"/>
+
+</LinearLayout>

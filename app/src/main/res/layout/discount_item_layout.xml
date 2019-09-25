@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/CardViewStyle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="15dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pizza1"
+            android:adjustViewBounds="true"
+            android:id="@+id/image"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50% Discount"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_toLeftOf="@+id/price"
+                android:layout_alignBottom="@+id/image"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:textStyle="bold"
+                android:id="@+id/discount"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14.99 $"
+                android:layout_alignBottom="@+id/image"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorPrimary"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:id="@+id/price"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image"
+            android:id="@+id/layout1"
+            android:weightSum="100"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:baselineAligned="false">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/non_veg"
+                    android:layout_alignBottom="@+id/item_name"
+                    android:layout_toRightOf="@+id/item_name"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crispy Chicken garlic periperi pizza"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:id="@+id/item_name"
+                    />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:gravity="right|center_vertical"
+                >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_background"
+                    android:textColor="@color/colorAccent"
+                    android:minHeight="30dp"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
