@@ -1,8 +1,12 @@
 package com.haqq.namu.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +15,8 @@ import android.transition.Slide;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,11 +31,14 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.haqq.namu.Config;
 import com.haqq.namu.MySingleton;
 import com.haqq.namu.R;
+import com.haqq.namu.RequestHandler;
 import com.haqq.namu.ViewDialog;
 import com.haqq.namu.users.SessionHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -56,6 +65,7 @@ public class SignInActivity extends AppCompatActivity {
     EditText etphone, etpassword;
     String phone, password;
     private String login_url = Config.url+"user_login.php";
+    private TextView forget;
 
 
     @Override
@@ -69,6 +79,15 @@ public class SignInActivity extends AppCompatActivity {
         sign_up_text= findViewById(R.id.sign_up_text);
         layout1= findViewById(R.id.layout1);
         signIn = findViewById(R.id.sign_in_button);
+
+        forget = findViewById(R.id.forget_password);
+
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            showDialogForget();
+            }
+        });
 
 
 
@@ -221,6 +240,74 @@ public class SignInActivity extends AppCompatActivity {
                 });
         MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
     }
+
+
+    private void showDialogForget() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.dialog_forget_password);
+        dialog.setCancelable(true);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        final EditText phone;
+        phone = dialog.findViewById(R.id.phone);
+        dialog.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.findViewById(R.id.btn_forget).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ForgetPass(phone.getText().toString());
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+    }
+
+
+    public void ForgetPass(final String phone){
+        class forgetpass extends AsyncTask<Bitmap,Void,String> {
+
+            RequestHandler rh = new RequestHandler();
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                viewDialog.showDialog();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                viewDialog.hideDialog();
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            protected String doInBackground(Bitmap... params) {
+                HashMap<String,String> data = new HashMap<>();
+
+                data.put("phone", phone);
+                String result = rh.sendPostRequest(Config.url + "forget_password.php",data);
+
+                return result;
+            }
+        }
+
+        forgetpass ui = new forgetpass();
+        ui.execute();
+    }
+
 
     public void setAnimation() {
         if (Build.VERSION.SDK_INT > 20) {

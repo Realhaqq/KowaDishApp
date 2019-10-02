@@ -117,10 +117,10 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
         delivery_charge = findViewById(R.id.delivery_charge);
         mylocation = findViewById(R.id.mylocation);
 
-        sub_total.setText(intent.getStringExtra("subtotal"));
-        payment_amount.setText(intent.getStringExtra("total"));
-        service_tax.setText(intent.getStringExtra("service_tax"));
-        delivery_charge.setText(intent.getStringExtra("delivery_charge"));
+        sub_total.setText("₦" + intent.getStringExtra("subtotal"));
+        payment_amount.setText("₦" + intent.getStringExtra("total"));
+        service_tax.setText("₦" + intent.getStringExtra("service_tax"));
+        delivery_charge.setText("₦" + intent.getStringExtra("delivery_charge"));
         mylocation.setText(session.getUserDetails().getMylocation());
 
 
@@ -275,6 +275,7 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
                 data.put("delivery_charge", deliverycharge);
                 data.put("location", location);
                 data.put("note", note);
+                data.put("service_fee", servicetax);
                 data.put("payment_status", "UNPDAID");
                 data.put("order_status", "PENDING");
                 data.put("userid", session.getUserDetails().getId());

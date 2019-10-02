@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg">
+    android:background="@drawable/bgnamu">
 
     <ImageView
         android:id="@+id/logo"
@@ -44,7 +44,7 @@
         android:layout_below="@+id/sign_in_text"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:drawableLeft="@drawable/ic_email_grey_24dp"
+        android:drawableLeft="@drawable/ic_phone_android_white_24dp"
         android:drawablePadding="15dp"
         android:textColorHint="@color/white"
         android:hint="Phone Number"
@@ -154,11 +154,12 @@
         android:weightSum="100">
 
         <TextView
+            android:id="@+id/forget_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:text="@string/sign_in_with"
+            android:text="Forget Password?"
             android:textColor="@color/colorAccent"
             android:textSize="12sp" />
 

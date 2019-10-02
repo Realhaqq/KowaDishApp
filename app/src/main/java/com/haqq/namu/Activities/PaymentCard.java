@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -34,6 +35,7 @@ import com.haqq.namu.users.SessionHandler;
 
 import org.json.JSONException;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -96,11 +98,25 @@ public class PaymentCard extends AppCompatActivity {
     }
     private void payStack() {
         viewDialog.showDialog();
+        DecimalFormat format = new DecimalFormat("#.#");
+        format.setDecimalSeparatorAlwaysShown(false);
             Intent i = getIntent();
             int expiryMonth =   Integer.parseInt(et_expire_month.getText().toString());
             int expiryYear  =   Integer.parseInt(et_expire_year.getText().toString());
-            transactionAmount = Integer.parseInt(i.getStringExtra("amount"));
-            String emailText = session.getUserDetails().getEmail();
+//            double topay = Double.parseDouble(i.getStringExtra("amount"));
+
+//        System.out.println(); //prints 2
+//        int strDouble = Integer.parseInt(String.format("%.2f", i.getStringExtra("amount")));
+
+//        String tamount = String.valueOf(Integer.parseInt(i.getStringExtra("amount")));
+//        transactionAmount = Integer.parseInt(i.getStringExtra("amount"));
+
+        double doubleNumber = Double.parseDouble(i.getStringExtra("amount"));
+        int intPart = (int) doubleNumber;
+
+        transactionAmount = intPart;
+
+        String emailText = session.getUserDetails().getEmail();
             Card card = new Card(cardNumber, expiryMonth, expiryYear, cardCVV);
             if (card.isValid()) {
                 Charge charge = new Charge();

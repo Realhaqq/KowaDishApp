@@ -5,9 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-<!--    <uses-sdk android:targetSdkVersion="28" android:minSdkVersion="14"-->
-<!--        tools:overrideLibrar="com.haqq.namu"/>-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -17,20 +16,40 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:largeHeap="true">
+        android:largeHeap="true"
+        tools:replace="android:allowBackup"
+        android:name=".tracker.Application"
+        >
 
 
 
-        <activity android:name="com.haqq.namu.Activities.SplashActivity">
-
+        <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
 
+        <activity
+            android:name=".tracker.activities.ActivityHome"
+            android:screenOrientation="portrait">
 
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="teliver.io"
+                    android:scheme="https" />
+
+            </intent-filter>
 
         </activity>
+
+        <activity android:name=".tracker.activities.ActivityTracking"/>
+
 
         <activity android:name="com.haqq.namu.Activities.FoodActivity" />
         <activity
@@ -51,20 +70,55 @@
 
         <activity android:name=".Activities.PaymentCard"></activity>
 
+        <activity android:name=".Activities.map.MainActivity"></activity>
+        <activity android:name=".Activities.FoodSearchActivity"></activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD4wgpSFsyKJ7vOS0iAJjLjwGOhe62rTI0" />
+
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+
+        <service android:name=".tracker.FirebaseMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <meta-data android:name="co.paystack.android.PublicKey"
             android:value="pk_live_28488d18b24729956940044bd50ddd9f759954ec"/>
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD4wgpSFsyKJ7vOS0iAJjLjwGOhe62rTI0" />
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.version"-->
+<!--            android:value="@integer/google_play_services_version" />-->
+
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="@string/google_maps_key" />-->
+
+        <!--Firebase Push-->
+        <service android:name="com.haqq.services.MyFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="com.haqq.services.MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

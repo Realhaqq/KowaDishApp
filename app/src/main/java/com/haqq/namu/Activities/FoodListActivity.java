@@ -6,46 +6,45 @@ import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageButton;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.haqq.namu.Adapters.FoodAdapter;
 import com.haqq.namu.Config;
 import com.haqq.namu.Models.Foods;
-import com.haqq.namu.Models.ItemData;
 import com.haqq.namu.MySingleton;
 import com.haqq.namu.Others.SpinnerAdapter;
 import com.haqq.namu.R;
@@ -76,21 +75,25 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
     private FloatingActionButton fab;
     SessionHandler session;
     ViewDialog viewDialog;
+    private Spinner sp;
+    ArrayList<String> restaurantList;
 
     private TextView count_cart_item;
     private static final String KEY_STATUS = "status";
     private static final String KEY_MESSAGE = "message";
+    private String spinner_url = Config.url + "restaurant.php";
 
     private ImageView toolbar_logo;
+
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
-    public void onCreate(Bundle saveInstanceState){
+    public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setAnimation();
         setContentView(R.layout.food_activity);
         mTopToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mTopToolbar);
-        mTopToolbar.setTitle("Name Eats");
+        mTopToolbar.setTitle("");
         mTopToolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);
         toolbar_logo = mTopToolbar.findViewById(R.id.toolbar_logo);
         mTopToolbar.setTitleTextColor(Color.WHITE);
@@ -112,9 +115,9 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        GetFoods();
+//        GetFoods();
         GetCartItemCount();
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener(){
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
 //                Intent intent = new Intent(FoodListActivity.this, FoodDetailActivity.class);
@@ -144,26 +147,115 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
             }
         });
 
+        restaurantList = new ArrayList<>();
+        sp = findViewById(spinner);
+        sp.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.white), PorterDuff.Mode.SRC_ATOP);
 
-        getToolbarSpinner();
+        sp.setPrompt("Select Restaurant");
+
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String restaurant = sp.getSelectedItem().toString();
+
+                if(restaurant == "Select Restaurant"){
+                        GetFoods();
+                }else{
+
+                    GetFoodsByRestaurant(restaurant);
+                }
+
+//                Toast.makeText(getApplicationContext(), "Response" + restaurant, Toast.LENGTH_LONG).show();
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                GetFoods();
+            }
+        });
+
+//        getToolbarSpinner();
+
+        loadSpinnerData(spinner_url);
+
+
 
     }
 
 
     @Override
     public void onRefresh() {
-       GetFoods();
+        GetFoods();
     }
 
 
-
-    public void GetFoods(){
+    public void GetFoods() {
         GetFoodAdaper1.clear();
-        String url_ = Config.url+"foods.php";
+        mSwipeRefreshLayout.setRefreshing(true);
+
+        String url_ = Config.url + "foods.php";
         jsonArrayRequest = new JsonArrayRequest(url_, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 GetCoursesWebCall(response);
+                mSwipeRefreshLayout.setRefreshing(false);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        mSwipeRefreshLayout.setRefreshing(false);
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
+    private void GetCoursesWebCall(JSONArray array) {
+        for (int i = 0; i < array.length(); i++) {
+            getFoodAdapter2 = new Foods();
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
+                getFoodAdapter2.setDescription(json.getString("description"));
+                getFoodAdapter2.setId(json.getString("id"));
+                getFoodAdapter2.setImage(json.getString("image"));
+                getFoodAdapter2.setTitle(json.getString("title"));
+                getFoodAdapter2.setPrice(json.getString("price"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            GetFoodAdaper1.add(getFoodAdapter2);
+        }
+        recyclerViewadapter = new FoodAdapter(GetFoodAdaper1, this, new FoodAdapter.DetailsAdapterListener() {
+            @Override
+            public void classOnClick(View v, int position) {
+//                String description = GetFoodAdaper1.get(position).getDescription();
+                String id = GetFoodAdaper1.get(position).getId();
+                AddToCart(id);
+
+            }
+        });
+        recyclerView.setAdapter(recyclerViewadapter);
+        recyclerViewadapter.notifyDataSetChanged();
+
+    }
+
+
+
+    public void GetFoodsByRestaurant(String restaurant){
+        GetFoodAdaper1.clear();
+        String url_ = Config.url+"get_foods.php?restaurant=" + restaurant;
+        url_ = url_.replaceAll(" ", "%20");
+        jsonArrayRequest = new JsonArrayRequest(url_, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                GetRestaurantWebCall(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -174,7 +266,7 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
     }
-    private void GetCoursesWebCall(JSONArray array) {
+    private void GetRestaurantWebCall(JSONArray array) {
         for (int i = 0; i < array.length(); i++){
             getFoodAdapter2 = new Foods();
             JSONObject json = null;
@@ -272,33 +364,17 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
         MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
     }
 
-
-    private void getToolbarSpinner(){
-
-        ArrayList<ItemData> list=new ArrayList<>();
-
-        //filling the spinner in toolbar
-
-        list.add(new ItemData("Pizza",R.drawable.pizza_wht));
-        list.add(new ItemData("Meal Combo",R.drawable.main_course_wht));
-        list.add(new ItemData("Burger",R.drawable.burger_wht));
-        list.add(new ItemData("Soup",R.drawable.soup_wht));
-        list.add(new ItemData("Chinese",R.drawable.chinese_wht));
-
-        Spinner sp=(Spinner)mTopToolbar.findViewById(spinner);
-        SpinnerAdapter adapter=new SpinnerAdapter(this,
-                R.layout.spinner_layout,R.id.food_name,list);
-        sp.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.white), PorterDuff.Mode.SRC_ATOP);
-        sp.setAdapter(adapter);
-
-    }
+//
+//    private void getToolbarSpinner(){
+//
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.activity_menu,menu);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
-        searchView.setOnQueryTextListener(this);
+//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+//        searchView.setOnQueryTextListener(this);
         return true;
 
     }
@@ -308,7 +384,7 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
 
         switch (item.getItemId()){
 
-            case R.id.action_filter:startActivity(new Intent(FoodListActivity.this,RefineActivity.class));
+//            case R.id.action_filter:startActivity(new Intent(FoodListActivity.this,RefineActivity.class));
         }
 
         return true;
@@ -323,6 +399,74 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
     public boolean onQueryTextChange(String newText) {
         return false;
     }
+
+
+
+
+    private void loadSpinnerData(String spinner_url) {
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, Config.url + "restaurant.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for(int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        Log.d("json", jsonObject.getString("restaurant_name"));
+                        restaurantList.add(jsonObject.getString("restaurant_name"));
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(FoodListActivity.this, R.layout.spinner_layout, R.id.food_name, restaurantList){
+                        @Override
+                        public boolean isEnabled(int position) {
+
+                            if (position == 0) {
+                                return false;
+                            }
+                            return true;
+
+                        }
+                    };
+                    sp.setAdapter(adapter);
+//
+
+
+//                    sp.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.white), PorterDuff.Mode.SRC_ATOP);
+
+//                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                            R.layout.row, R.id.restaurant, restaurantList){
+//                        @Override
+//                        public boolean isEnabled(int position) {
+//
+//                            if (position == 0) {
+//                                return false;
+//                            }
+//                            return true;
+//
+//                        }
+//                    };
+//                    sp.setAdapter(adapter);
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+
+                Toast.makeText(getApplicationContext(), "Response" + error.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+        int socketTimeout = 30000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        requestQueue.add(stringRequest);
+    }
+
 
     public void setAnimation(){
         if(Build.VERSION.SDK_INT>20) {

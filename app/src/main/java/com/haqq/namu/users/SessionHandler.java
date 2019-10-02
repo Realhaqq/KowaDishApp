@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.EditText;
 
+import com.haqq.namu.Models.Orders;
 import com.haqq.namu.Models.User;
 
 import java.util.Date;
@@ -54,10 +55,20 @@ public class SessionHandler {
     }
 
 //
-//    public void EditPaymentStatus(String payment_status){
-//        mEditor.putString(KEY_PAYMENT_STATUS, payment_status);
-//        mEditor.commit();
-//    }
+    public void OrderInfo(String orderid, String rider){
+        mEditor.putString("orderid", orderid);
+        mEditor.putString("rider", rider);
+        mEditor.commit();
+    }
+
+    public Orders getOrderInfo(){
+        Orders orders = new Orders();
+        orders.setOrderid(mPreferences.getString("orderid", KEY_EMPTY));
+        orders.setRider(mPreferences.getString("rider", KEY_EMPTY));
+        return orders;
+    }
+
+
 
 
 //    Update Place

@@ -195,7 +195,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 delivery_charge.setText("₦"+500);
                 price=price+tax+0.50;
                 total.setText("₦" + numberFormat.format(price + 500));
-                int newprice = ctotal + 500;
+//                int newprice = ctotal + 500;
 
                 UpdateCart(id);
 
@@ -242,7 +242,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 HashMap<String,String> data = new HashMap<>();
 
                 data.put("foodid", id);
-//                data.put("qty", s);
+                data.put("userid", session.getUserDetails().getId());
                 String result = rh.sendPostRequest(Config.url + "update_cart_plus.php",data);
 
                 return result;
@@ -314,6 +314,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 HashMap<String,String> data = new HashMap<>();
 
                 data.put("foodid", id);
+                data.put("userid", session.getUserDetails().getId());
                 String result = rh.sendPostRequest(Config.url + "update_cart_minus.php",data);
 
                 return result;
@@ -339,7 +340,6 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
 
         final EditText note;
         note = dialog.findViewById(R.id.note);
-//        notice.setText(notify);
         dialog.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -350,12 +350,22 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         dialog.findViewById(R.id.add_note).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(CartActivity.this,ConfirmActivity.class));
                 Intent intent = new Intent(CartActivity.this, ConfirmActivity.class);
-                intent.putExtra("total", dtotal);
-                intent.putExtra("subtotal", dsubtotal);
-                intent.putExtra("service_tax", dservice_tax);
-                intent.putExtra("delivery_charge", ddelivery_charge);
+                String ndtotal = dtotal.replaceAll("[^\\d.]", "");
+                String ndsubtotal = dsubtotal.replaceAll("[^\\d.]", "");
+                String ndservice_tax = dservice_tax.replaceAll("[^\\d.]", "");
+                String nddelivery_charge = ddelivery_charge.replaceAll("[^\\d.]", "");
+
+//                int num = Integer.parseInt(String.valueOf(ndtotal).split("\\.")[0]);
+//                DecimalFormat df = new DecimalFormat("##0");
+
+//                df.format((Math.round(ndtotal * 100.0) / 100.0));
+
+//                String newnd =new DecimalFormat("#").format(ndtotal);
+                intent.putExtra("total", ndtotal);
+                intent.putExtra("subtotal", ndsubtotal);
+                intent.putExtra("service_tax", ndservice_tax);
+                intent.putExtra("delivery_charge", nddelivery_charge);
                 intent.putExtra("note", note.getText().toString());
                 startActivity(intent);
             }

@@ -1,5 +1,4 @@
 package com.haqq.namu.Others;
-
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;

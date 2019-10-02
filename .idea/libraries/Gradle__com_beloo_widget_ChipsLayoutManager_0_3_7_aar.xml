@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.beloo.widget:ChipsLayoutManager:0.3.7@aar">
     <ANNOTATIONS>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/5f6894491636f89a406f18bf15ca1052/ChipsLayoutManager-0.3.7/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/b2ddb337e01007c8b71fd605ea44ebe2/ChipsLayoutManager-0.3.7/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/5f6894491636f89a406f18bf15ca1052/ChipsLayoutManager-0.3.7/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/5f6894491636f89a406f18bf15ca1052/ChipsLayoutManager-0.3.7/res" />
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/b2ddb337e01007c8b71fd605ea44ebe2/ChipsLayoutManager-0.3.7/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/b2ddb337e01007c8b71fd605ea44ebe2/ChipsLayoutManager-0.3.7/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -52,7 +52,7 @@ public class CustomVarietyAdapter extends RecyclerView.Adapter<CustomVarietyAdap
         final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.food_variety_layout, parent, false);
         MyHolder myNewsHolder=new MyHolder(view);
-        re = (RecyclerView) parent.findViewById(R.id.horizontal_recycler_view);
+//        re = (RecyclerView) parent.findViewById(R.id.horizontal_recycler_view);
         return myNewsHolder;
     }
 

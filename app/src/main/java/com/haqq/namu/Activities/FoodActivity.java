@@ -31,7 +31,7 @@ import static com.haqq.namu.R.id.spinner;
  * Created by sagar on 29/6/17.
  */
 
-public class FoodActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class FoodActivity extends AppCompatActivity{
 
     private Toolbar toolbar;
     private PrefManager prefManager;
@@ -87,34 +87,34 @@ public class FoodActivity extends AppCompatActivity implements SearchView.OnQuer
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.activity_menu,menu);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
-        searchView.setOnQueryTextListener(this);
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
-
-            case R.id.action_filter:startActivity(new Intent(FoodActivity.this,RefineActivity.class));
-        }
-
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        getMenuInflater().inflate(R.menu.activity_menu,menu);
+//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+//        searchView.setOnQueryTextListener(this);
+//        return true;
+//
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        switch (item.getItemId()){
+//
+//            case R.id.action_filter:startActivity(new Intent(FoodActivity.this,RefineActivity.class));
+//        }
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onQueryTextSubmit(String query) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean onQueryTextChange(String newText) {
+//        return false;
+//    }
 }

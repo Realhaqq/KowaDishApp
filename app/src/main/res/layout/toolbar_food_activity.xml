@@ -17,6 +17,8 @@
         android:layout_height="wrap_content"
         app:backgroundTint="@color/white"
         android:id="@+id/spinner"
+        android:spinnerMode="dialog"
+
         />
 
 </android.support.v7.widget.Toolbar>

@@ -3,6 +3,7 @@ package com.haqq.namu.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,9 +25,10 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
-import com.haqq.namu.Activities.FoodActivity;
+//import com.haqq.namu.Activities.FoodActivity;
 import com.haqq.namu.Activities.FoodDetailActivity;
 import com.haqq.namu.Activities.FoodListActivity;
+import com.haqq.namu.Activities.FoodSearchActivity;
 import com.haqq.namu.Models.DiscountItem;
 import com.haqq.namu.Models.Item;
 import com.haqq.namu.Others.CustomItemAdapter;
@@ -55,6 +58,8 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
     private ImageView[] dots;
     private RecyclerView horizontal_recycler_view;
     SessionHandler session;
+    private ImageView btn_search;
+    private EditText et_search;
 
 
     private DiscountItemAdapter adapter;
@@ -64,6 +69,7 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
     private LinearLayout linearLayout;
     private TextView city;
     private TextView street;
+    private FloatingActionButton fab_pizza;
 
     private final int[] item = {R.drawable.pizza,
             R.drawable.main_course,
@@ -91,11 +97,21 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
         street = (TextView) view.findViewById(R.id.street);
         pref = new PrefManager(getActivity());
 
-        //intialising the horizontal recycle view
-        horizontal_recycler_view = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
-        horizontal_recycler_view.setLayoutManager(new GridLayoutManager(getContext(), 4));
 
-        setAdapter();
+        fab_pizza = view.findViewById(R.id.pizza);
+        fab_pizza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //intialising the horizontal recycle view
+//        horizontal_recycler_view = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
+//        horizontal_recycler_view.setLayoutManager(new GridLayoutManager(getContext(), 4));
+
+//        setAdapter();
 
         //setting the adapter the image's viewpager
         mAdapter = new CustomPagerAdapter(getActivity(), mResources);
@@ -104,6 +120,18 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
         mViewPager.addOnPageChangeListener(this);
         setPageViewIndicator();
 
+        btn_search = view.findViewById(R.id.btn_search);
+        et_search = view.findViewById(R.id.etsearch);
+
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String filter = et_search.getText().toString().trim();
+                Intent intent = new Intent(getContext(), FoodSearchActivity.class);
+                intent.putExtra("filter", filter);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

@@ -219,22 +219,23 @@ public class MainActivity extends AppCompatActivity {
 
             toolbar_logo.setVisibility(View.VISIBLE);
             getSupportActionBar().setTitle("");
-//            getSupportActionBar().setBackgroundDrawable(new Colo);
-//            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.argb(0,67,219,154)));
+
         }
 
         else if(navItemIndex==4){
 
             toolbar_logo.setVisibility(View.GONE);
             getSupportActionBar().setTitle(activityTitles[navItemIndex]);
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.argb(0,15,219,154)));
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+
         }
         else
 
         {
             toolbar_logo.setVisibility(View.GONE);
             getSupportActionBar().setTitle(activityTitles[navItemIndex]);
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(15,219,154)));
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+
         }
 
     }

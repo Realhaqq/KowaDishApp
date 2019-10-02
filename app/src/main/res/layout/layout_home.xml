@@ -23,14 +23,15 @@
         android:paddingRight="10dp"
         android:orientation="horizontal" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/horizontal_recycler_view"
-        android:layout_width="400dp"
-        android:layout_height="385dp"
-        android:layout_below="@+id/viewpager"
-        android:layout_marginTop="18dp"
-        android:background="@color/white" />
+<!--    <android.support.v7.widget.RecyclerView-->
+<!--        android:id="@+id/horizontal_recycler_view"-->
+<!--        android:layout_width="400dp"-->
+<!--        android:layout_height="385dp"-->
+<!--        android:layout_below="@+id/viewpager"-->
+<!--        android:layout_marginTop="18dp"-->
+<!--        android:background="@color/white" />-->
 
+    <include layout="@layout/layout_menus"/>
     <android.support.v7.widget.CardView
         style="@style/CardViewStyle"
         android:layout_width="match_parent"
@@ -95,15 +96,18 @@
 
 
                 <EditText
+                    android:id="@+id/etsearch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_weight="90"
                     android:background="@color/white"
                     android:hint="What'd you like to eat today?"
+                    android:singleLine="true"
                     android:textSize="15sp" />
 
                 <ImageView
+                    android:id="@+id/btn_search"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
