@@ -64,11 +64,6 @@ public class ProcessOrdersFragment extends Fragment {
         View view = inflater.inflate(R.layout.process_layout, container, false);
         session = new SessionHandler(getContext());
         fab = view.findViewById(R.id.fab);
-//        recyclerView = (RecyclerView) view.findViewById(R.id.bill_item_grid);
-//        recyclerView.setHasFixedSize(true);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         ontime = view.findViewById(R.id.ontime);
         service_tax = view.findViewById(R.id.service_tax);
@@ -85,7 +80,7 @@ public class ProcessOrdersFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(orderid == "") {
-                    Toast.makeText(getContext(), "No proceeing order yet!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "No processing order yet!", Toast.LENGTH_LONG).show();
                 }else if(rider == ""){
                     Toast.makeText(getContext(), "No Rider assign to!", Toast.LENGTH_LONG).show();
 
@@ -119,8 +114,6 @@ public class ProcessOrdersFragment extends Fragment {
                                 ontime.setText(response.getString("ontime"));
                                 sub_total.setText("₦" + response.getString("subtotal"));
                                 amount.setText("₦" + response.getString("amount"));
-//                                c_amount.setText("₦" + response.getString("amount"));
-//                                paymnet_method.setText(response.getString("payment_method"));
 
 
 

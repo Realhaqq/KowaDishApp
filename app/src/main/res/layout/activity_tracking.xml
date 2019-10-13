@@ -51,7 +51,7 @@
                 <TextView
                     android:id="@+id/orderId"
                     style="@style/txtViewCart"
-                    android:text="@string/oderId"
+                    android:text="***"
                     android:textColor="@color/colorBlack"
                      />
 
@@ -76,9 +76,8 @@
                 <TextView
                     android:id="@+id/ridername"
                     style="@style/txtViewCart"
-                    android:text="₹829.00"
-                    android:textColor="@color/colorBlack"
-                     />
+                    android:text="***"
+                    android:textColor="@color/colorBlack" />
 
             </LinearLayout>
 
@@ -133,9 +132,8 @@
                     style="@style/txtViewCart"
                     android:layout_marginBottom="10dp"
                     android:padding="10dp"
-                    android:text="₹968.00"
-                    android:textColor="@color/colorBlack"
-                     />
+                    android:text="***"
+                    android:textColor="@color/colorBlack" />
 
             </LinearLayout>
 

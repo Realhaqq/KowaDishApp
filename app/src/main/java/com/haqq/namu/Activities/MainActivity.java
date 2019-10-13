@@ -116,8 +116,13 @@ public class MainActivity extends AppCompatActivity {
         cart_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CartActivity.class);
-                startActivity(intent);
+                String count = cart_count.getText().toString();
+                if (count != ""){
+
+                }else {
+                    Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

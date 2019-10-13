@@ -76,6 +76,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
 //                .centerCrop(150, 150)
 //                .resize(150, 150)
 //                .fit()
+                .override(500,500)
                 .placeholder(R.drawable.namudown)
 //                .centerInside()
                 .error(R.drawable.namudown)

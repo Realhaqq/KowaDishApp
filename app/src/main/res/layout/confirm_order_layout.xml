@@ -73,10 +73,10 @@
                             android:id="@+id/sub_total"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="27.98 $"
                             android:layout_weight="50"
                             android:gravity="right"
-                            android:textSize="12sp"/>
+                            android:text="***"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -97,10 +97,10 @@
                             android:id="@+id/service_tax"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="1.09 $"
                             android:layout_weight="50"
                             android:gravity="right"
-                            android:textSize="12sp"/>
+                            android:text="***"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -121,10 +121,10 @@
                             android:id="@+id/delivery_charge"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="29.57 $"
                             android:layout_weight="50"
                             android:gravity="right"
-                            android:textSize="12sp"/>
+                            android:text="***"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -150,9 +150,9 @@
                             android:id="@+id/payment_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="29.57 $"
                             android:layout_weight="50"
-                            android:gravity="right"/>
+                            android:gravity="right"
+                            android:text="***" />
 
                     </LinearLayout>
 

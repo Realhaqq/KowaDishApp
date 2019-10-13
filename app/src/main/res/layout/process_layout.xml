@@ -15,24 +15,24 @@
         app:contentPaddingLeft="10dp"
         app:contentPaddingRight="10dp">
 
-            <TextView
-                android:id="@+id/ontime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12 May"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/ontime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*****"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
-                android:id="@+id/amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="33.54 $"
-                android:layout_gravity="right"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:textSize="18sp"/>
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="*****"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </android.support.v7.widget.CardView>
 
@@ -193,9 +193,9 @@
                     android:id="@+id/sub_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="27.98 $"
                     android:layout_gravity="right"
-                    android:textSize="12sp"/>
+                    android:text="***"
+                    android:textSize="12sp" />
 
             </FrameLayout>
 
@@ -214,9 +214,9 @@
                     android:id="@+id/service_tax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1.09 $"
                     android:layout_gravity="right"
-                    android:textSize="12sp"/>
+                    android:text="***"
+                    android:textSize="12sp" />
 
             </FrameLayout>
 
@@ -235,7 +235,7 @@
                     android:id="@+id/delivery_charge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="29.57 $"
+                    android:text="***"
                     android:layout_gravity="right"
                     android:textSize="12sp"/>
 
@@ -262,7 +262,7 @@
                     android:id="@+id/c_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="29.57 $"
+                    android:text="***"
                     android:layout_gravity="right"/>
 
             </FrameLayout>

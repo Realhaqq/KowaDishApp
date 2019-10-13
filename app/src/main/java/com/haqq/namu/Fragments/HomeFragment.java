@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
     private LinearLayout linearLayout;
     private TextView city;
     private TextView street;
-    private FloatingActionButton fab_pizza;
+    private FloatingActionButton fab_pizza, fab_meal, fab_burger, fab_shawarma, fab_chips, fab_chinese, fab_chicken, fab_samosa, fab_mocktail;
 
     private final int[] item = {R.drawable.pizza,
             R.drawable.main_course,
@@ -99,19 +99,87 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
 
 
         fab_pizza = view.findViewById(R.id.pizza);
+        fab_burger = view.findViewById(R.id.burger);
+        fab_chicken = view.findViewById(R.id.chicken);
+        fab_chinese = view.findViewById(R.id.chinese);
+        fab_chips = view.findViewById(R.id.chips);
+        fab_meal = view.findViewById(R.id.meal);
+        fab_mocktail = view.findViewById(R.id.mocktail);
+        fab_samosa = view.findViewById(R.id.samosa);
+        fab_shawarma = view.findViewById(R.id.shawarma);
         fab_pizza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "pizza");
+                startActivity(intent);
+            }
+        });
+        fab_burger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "burger");
+                startActivity(intent);
+            }
+        });
+        fab_chicken.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "chicken");
+                startActivity(intent);
+            }
+        });
+        fab_chinese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "chinese");
+                startActivity(intent);
+            }
+        });
+        fab_chips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "chips");
+                startActivity(intent);
+            }
+        });
+        fab_meal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "meal");
+                startActivity(intent);
+            }
+        });
+        fab_mocktail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "mocktail");
+                startActivity(intent);
+            }
+        });
+        fab_samosa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "samosa");
+                startActivity(intent);
+            }
+        });
+        fab_shawarma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FoodListActivity.class);
+                intent.putExtra("filter", "shawarma");
                 startActivity(intent);
             }
         });
 
-        //intialising the horizontal recycle view
-//        horizontal_recycler_view = (RecyclerView) view.findViewById(R.id.horizontal_recycler_view);
-//        horizontal_recycler_view.setLayoutManager(new GridLayoutManager(getContext(), 4));
-
-//        setAdapter();
 
         //setting the adapter the image's viewpager
         mAdapter = new CustomPagerAdapter(getActivity(), mResources);
@@ -203,33 +271,33 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
 
     }
 
-
-    private void setAdapter() {
-
-        ArrayList<Item> horizontalList = new ArrayList<>();
-
-        //filling the data in horizontal recycle view of home page
-        horizontalList.add(new Item(item[0], "Pizza"));
-        horizontalList.add(new Item(item[1], "Meal Combo"));
-        horizontalList.add(new Item(item[2], "Burger"));
-        horizontalList.add(new Item(item[3], "Chinese"));
-        horizontalList.add(new Item(item[4], "Soup"));
-        horizontalList.add(new Item(item[0], "Pizza"));
-        horizontalList.add(new Item(item[1], "Meal Combo"));
-        horizontalList.add(new Item(item[2], "Burger"));
-        horizontalList.add(new Item(item[3], "Chinese"));
-        horizontalList.add(new Item(item[4], "Soup"));
-
-        CustomItemAdapter horizontalAdapter = new CustomItemAdapter(getActivity(), horizontalList, new CustomItemAdapter.VenueAdapterClickCallbacks() {
-            @Override
-            public void onCardClick(String p) {
-                pref.setItem(p);
-                startActivity(new Intent(getActivity(), FoodListActivity.class));
-            }
-        });
-
-        horizontal_recycler_view.setAdapter(horizontalAdapter);
-    }
+//
+//    private void setAdapter() {
+//
+//        ArrayList<Item> horizontalList = new ArrayList<>();
+//
+//        //filling the data in horizontal recycle view of home page
+//        horizontalList.add(new Item(item[0], "Pizza"));
+//        horizontalList.add(new Item(item[1], "Meal Combo"));
+//        horizontalList.add(new Item(item[2], "Burger"));
+//        horizontalList.add(new Item(item[3], "Chinese"));
+//        horizontalList.add(new Item(item[4], "Soup"));
+//        horizontalList.add(new Item(item[0], "Pizza"));
+//        horizontalList.add(new Item(item[1], "Meal Combo"));
+//        horizontalList.add(new Item(item[2], "Burger"));
+//        horizontalList.add(new Item(item[3], "Chinese"));
+//        horizontalList.add(new Item(item[4], "Soup"));
+//
+//        CustomItemAdapter horizontalAdapter = new CustomItemAdapter(getActivity(), horizontalList, new CustomItemAdapter.VenueAdapterClickCallbacks() {
+//            @Override
+//            public void onCardClick(String p) {
+//                pref.setItem(p);
+//                startActivity(new Intent(getActivity(), FoodListActivity.class));
+//            }
+//        });
+//
+//        horizontal_recycler_view.setAdapter(horizontalAdapter);
+//    }
 
     @Override
     public void onClick(View v) {

@@ -35,6 +35,7 @@ import com.haqq.namu.RecyclerTouchListener;
 import com.haqq.namu.RequestHandler;
 import com.haqq.namu.ViewDialog;
 import com.haqq.namu.users.SessionHandler;
+import com.haqq.namu.users.SessionSetting;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,6 +69,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     RequestQueue requestQueue;
     SessionHandler session;
     ViewDialog viewDialog;
+    SessionSetting sessionSetting;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +77,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.cart_layout);
 
         session = new SessionHandler(getApplicationContext());
+        sessionSetting = new SessionSetting(getApplicationContext());
 
 
         mSwipeRefreshLayout = findViewById(R.id.swipe_container);

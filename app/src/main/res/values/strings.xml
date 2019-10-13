@@ -156,8 +156,8 @@
     <string name="textTrack">Track</string>
     <string name="txtorderplaced">YOUR ORDER IS PLACED</string>
     <string name="txtPackageDispatched">YOUR PACKAGE IS DISPATCHED</string>
-    <string name="txtOnRoute">Order Picked Up \n\n<u>Track With Teliver</u></string>
-    <string name="txtOrderDeivered">Order T \'elivered</string>
+    <string name="txtOnRoute">Order Picked Up \n\n<u>Track Your Order</u></string>
+    <string name="txtOrderDeivered">Order Delivered</string>
     <string name="txtInKitchen">Order Confirmed</string>
     <string name="txtDeliveryDetails">YOUR DELIVERY DETAILS</string>
     <string name="txtName">Name</string>
@@ -169,7 +169,7 @@
     <string name="txtStartTracking">Start Tracking</string>
     <string name="txtPaymentSuccess">Order Received</string>
     <string name="txtOrderConfirmed">ORDER CONFIRMED</string>
-    <string name="txtTeliverId">The tracking id you received from Teliver, enter it to track your order</string>
+    <string name="txtTeliverId">The tracking id you received from Namu, enter it to track your order</string>
     <string name="txtNearYou">Near your Delivery Address (View in Maps)</string>
     <string name="txtFoodHint">Hot and Tasty food will be on the way soon</string>
     <string name="txtProcessing">Order Processing</string>

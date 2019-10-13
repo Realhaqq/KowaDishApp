@@ -85,6 +85,8 @@ public class PaymentCard extends AppCompatActivity {
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                cardNumber  =   et_card_number.getText().toString();
               cardCVV =   et_cvv.getText().toString();
                 if (validateInputs()) {
                     payStack();

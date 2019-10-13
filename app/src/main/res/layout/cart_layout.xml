@@ -72,30 +72,30 @@
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/subtotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="27.96$"
             android:layout_alignParentRight="true"
-            android:textSize="@dimen/textsize"
-            android:id="@+id/subtotal"/>
+            android:text="***"
+            android:textSize="@dimen/textsize" />
 
         <TextView
+            android:id="@+id/service_tax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1.09$"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/subtotal_text"
-            android:textSize="@dimen/textsize"
-            android:id="@+id/service_tax"/>
+            android:layout_alignParentRight="true"
+            android:text="***"
+            android:textSize="@dimen/textsize" />
 
         <TextView
+            android:id="@+id/delivery_charge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0.50$"
             android:layout_below="@+id/service_text"
             android:layout_alignParentRight="true"
-            android:textSize="@dimen/textsize"
-            android:id="@+id/delivery_charge"/>
+            android:text="***"
+            android:textSize="@dimen/textsize" />
 
     </RelativeLayout>
 
@@ -135,15 +135,14 @@
                 android:layout_marginRight="10dp"/>
 
             <TextView
+                android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="27.98 $"
-                android:textColor="@color/yellow"
-                android:textStyle="bold"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="5dp"
-                android:id="@+id/total"
-                />
+                android:text="******"
+                android:textColor="@color/yellow"
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="wrap_content"

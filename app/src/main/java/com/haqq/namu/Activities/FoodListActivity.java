@@ -98,6 +98,17 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
         toolbar_logo = mTopToolbar.findViewById(R.id.toolbar_logo);
         mTopToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mTopToolbar);
+        mTopToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finish();
+
+            }
+        });
+
+
+
 
         session = new SessionHandler(getApplicationContext());
         mSwipeRefreshLayout = findViewById(R.id.swipe_container);
@@ -120,13 +131,6 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-//                Intent intent = new Intent(FoodListActivity.this, FoodDetailActivity.class);
-//                intent.putExtra("title", GetFoodAdaper1.get(position).getTitle());
-//                intent.putExtra("description", GetFoodAdaper1.get(position).getDescription());
-//                intent.putExtra("image", GetFoodAdaper1.get(position).getImage());
-//                intent.putExtra("price", GetFoodAdaper1.get(position).getPrice());
-//                intent.putExtra("id", GetFoodAdaper1.get(position).getId());
-//                startActivity(intent);
             }
 
             @Override
@@ -139,13 +143,18 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
         fab = findViewById(R.id.fab_add);
         count_cart_item = findViewById(R.id.count_item_in_cart);
 
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FoodListActivity.this, CartActivity.class);
-                startActivity(intent);
-            }
+                String count = count_cart_item.getText().toString();
+                if (count != "") {
+                    Intent intent = new Intent(FoodListActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
+                }
         });
+
 
         restaurantList = new ArrayList<>();
         sp = findViewById(spinner);
@@ -158,12 +167,9 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String restaurant = sp.getSelectedItem().toString();
 
-                if(restaurant == "Select Restaurant"){
-                        GetFoods();
-                }else{
 
                     GetFoodsByRestaurant(restaurant);
-                }
+
 
 //                Toast.makeText(getApplicationContext(), "Response" + restaurant, Toast.LENGTH_LONG).show();
 
@@ -196,6 +202,10 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
         mSwipeRefreshLayout.setRefreshing(true);
 
         String url_ = Config.url + "foods.php";
+//        Intent i = getIntent();
+//        String url_ = Config.url+"get_foods.php");
+//        url_ = url_.replaceAll(" ", "%20");
+
         jsonArrayRequest = new JsonArrayRequest(url_, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -250,7 +260,8 @@ public class FoodListActivity extends AppCompatActivity implements SwipeRefreshL
 
     public void GetFoodsByRestaurant(String restaurant){
         GetFoodAdaper1.clear();
-        String url_ = Config.url+"get_foods.php?restaurant=" + restaurant;
+        Intent i = getIntent();
+        String url_ = Config.url+"get_foods.php?restaurant=" + restaurant + "&filter="+i.getStringExtra("filter");
         url_ = url_.replaceAll(" ", "%20");
         jsonArrayRequest = new JsonArrayRequest(url_, new Response.Listener<JSONArray>() {
             @Override
